@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>formulaire</title>
+</head>
+<body>
+
+    <form action="">
+        <table>  
+            <tr>
+                <td><label for="nom" >Nom:</label></td>
+                <td><input type="text"  name="nom" id="nom"></td>
+                <td><span id="Cnom"></span></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email:</label></td>
+                <td><input type="email" required name="email" id="email"></td>
+                <td><span id="Cemail"></span></td>
+            </tr>
+            <tr>
+                <td><label for="psw">Password:</label></td>
+                <td><input type="password" required name="psw" id="psw" ></td>
+                <td><span id="Cpass"></span></td>
+            </tr>
+            <tr>
+                <td><label for="cpsw" >Confirm Password:</label></td>
+                <td><input type="password" required name="cpsw" id="cpsw"></td>
+                <td><span id="Ccpass"></span></td>
+            </tr>
+            <tr>
+                <td><label for="Dnais">Date de Naissance:</label></td>
+                <td><input type="date" required name="Dnais" id="Dnais"></td>
+                <td> <span id="Cdate"></span></td>
+            </tr>
+            <tr><td>        <button onclick="envoyer(event)">Envoyer</button>
+            </td></tr>
+        </table>
+    </form>
+    <script>
+        let Nom = document.getElementById("nom");
+        let Email = document.getElementById("email");
+        let Password = document.getElementById("psw");
+        let CPassword = document.getElementById("cpsw");
+        let Date1 = document.getElementById("Dnais");
+        
+
+        function envoyer(event) {
+            // Empecher le rechargement de la page
+            event.preventDefault();
+
+           
+            function nom() {
+                if (Nom.value.trim() !== "") {
+                    document.getElementById("Cnom").innerHTML = "Bravo";
+                } else {
+                    document.getElementById("Cnom").innerHTML = "Veuillez entrer un nom";
+                }
+            }
+            nom();
+
+           
+            function email() {
+                if (Email.value.trim() !== "") {
+                    document.getElementById("Cemail").innerHTML = "Bravo";
+                } else {
+                    document.getElementById("Cemail").innerHTML = "Entrer l'email";
+                }
+            }
+            email();
+            function password() {
+                if (Email.value.trim() !== "") {
+                    document.getElementById("Cpass").innerHTML = "Bravo";
+                } else {
+                    document.getElementById("Cpass").innerHTML = "Entrer le password";
+                }
+            }
+            password();
+            function cpassword() {
+                if (CPassword.value.trim() === Password.value.trim()) {
+                    document.getElementById("Ccpass").innerHTML = "correct";
+                } else {
+                    document.getElementById("Ccpass").innerHTML = "incorrect";
+                }
+            }
+            cpassword();
+            function date() {
+                let d1 = new Date()
+                let selectedDate = Date1.value; 
+                console.log(selectedDate >  d1)
+                if (selectedDate < d1) {
+                    document.getElementById("Cdate").innerHTML = "Bravo";
+                }  if (selectedDate ==="") {
+                    document.getElementById("Cdate").innerHTML = "Entrer une date";
+                } else {
+                    document.getElementById("Cdate").innerHTML = "Entrer la date de naissance reel";
+                }
+            }
+            date();
+        }
+    </script>
+</body>
+</html>
